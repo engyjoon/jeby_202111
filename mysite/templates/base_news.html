@@ -8,12 +8,12 @@
 
 {% block body %}
 <body class="d-flex flex-column h-100">
-    {% include 'navbar.html' %}
+    {% include 'include/navbar.html' %}
 
     <div class="container" id="error_msg">
         <div class="row">
             <div class="col">
-                {% include "errors.html" %}
+                {% include "include/errors.html" %}
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
     </main>
 
     {% block footer %}
-        {% include 'footer.html' %}
+        {% include 'include/footer.html' %}
     {% endblock footer %}
 
 </body>
