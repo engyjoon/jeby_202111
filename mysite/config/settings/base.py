@@ -154,5 +154,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/news/list'
+LOGIN_REDIRECT_URL = '/news/search'
 LOGOUT_REDIRECT_URL = '/common/login'
+
+NAVER_API_ID = get_secret("NAVER_API_ID")
+NAVER_API_SECRET = get_secret("NAVER_API_SECRET")

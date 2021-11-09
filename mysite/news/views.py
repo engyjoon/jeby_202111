@@ -1,12 +1,40 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .forms import NewsSearchForm
+from .utils import naverapi_utils as naverapi
+
 
 @login_required(login_url='common:login')
-def news_list(request):
+def index(request):
     """
-    뉴스 리스트를 반환한다.
+    뉴스 검색 화면으로 리다이렉트한다.
     """
+    return redirect('news:news_search')
+
+
+@login_required(login_url='common:login')
+def news_search(request):
+    """
+    뉴스 검색 화면을 반환한다.
+    """
+
+    news_list = []
+
+    if request.method == 'POST':
+        form = NewsSearchForm(request.POST)
+
+        if form.is_valid():
+            keyword = form.cleaned_data['keyword']
+            news_list = naverapi.get_news_by_hour(keyword)
+    else:
+        form = NewsSearchForm()
+
     return render(
         request,
-        'news/news_list.html',
+        'news/news_search.html',
+        {
+            'form': form,
+            'news_list': news_list,
+        }
     )
