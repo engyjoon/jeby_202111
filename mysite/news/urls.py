@@ -1,9 +1,23 @@
 from django.urls import path
-from . import views
+from .views import base_views, keyword_views
 
-app_name = 'news'
+app_name = "news"
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('search/', views.news_search, name='news_search'),
+    path("", base_views.index, name="index"),
+    path("search/", base_views.news_search, name="news_search"),
+    path("keyword/", keyword_views.KeywordList.as_view(), name="keyword_list"),
+    path(
+        "keyword/create/", keyword_views.KeywordCreate.as_view(), name="keyword_create"
+    ),
+    path(
+        "keyword/update/<int:pk>/",
+        keyword_views.KeywordUpdate.as_view(),
+        name="keyword_update",
+    ),
+    path(
+        "keyword/delete/<int:pk>/",
+        keyword_views.KeywordDelete.as_view(),
+        name="keyword_delete",
+    ),
 ]

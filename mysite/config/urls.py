@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from news import views as views_news
+from news.views import base_views as views_news
 
 urlpatterns = [
     path('', views_news.index),
