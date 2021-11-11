@@ -74,6 +74,43 @@
         {% endif %}
     </div>
 </div>
+
+<div class="modal fade" id="keywordListModal" tabindex="-1" aria-labelledby="keywordListModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="keywordListModalLabel">키워드 선택하기</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:30%;">관리명</th>
+                            <th scope="col">키워드</th>
+                            <th scope="col" style="width:20%;">액션</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for keyword in keywords %}
+                        <tr>
+                            <td>{{ keyword.title }}</td>
+                            <td>{{ keyword.content }}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary btn-select-keyword"
+                                    data-keyword="{{ keyword.content }}">선택</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 
 {% block footer %}

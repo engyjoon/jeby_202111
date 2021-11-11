@@ -18,4 +18,11 @@ $(document).ready(function () {
     $("#search-img").click(function () {
         $("#frm-search").submit();
     });
+
+    // 키워드 리스트 모달에서 키워드를 선택하면
+    // 키워드를 검색창에 입력하고 키워드 리스트 모달을 닫는다.
+    $(".btn-select-keyword").click(function () {
+        $("#input-keyword").val($(this).data("keyword"));
+        $("#keywordListModal").modal('hide');
+    });
 });
