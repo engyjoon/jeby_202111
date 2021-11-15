@@ -20,3 +20,11 @@ class Keyword(models.Model):
                 fields=["title", "author"], name="unique_title_author"
             )
         ]
+
+
+class Site(models.Model):
+    address = models.CharField(max_length=100, verbose_name="Address")
+    description = models.CharField(max_length=100, verbose_name="Description")
+
+    def __str__(self):
+        return self.description

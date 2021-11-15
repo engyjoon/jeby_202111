@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import base_views, keyword_views
+from .views import base_views, keyword_views, site_views
 
 app_name = "news"
 
@@ -20,4 +20,6 @@ urlpatterns = [
         keyword_views.KeywordDelete.as_view(),
         name="keyword_delete",
     ),
+    path("site/create/", site_views.SiteCreate.as_view(), name="site_create"),
+    path("site/update/<int:pk>/", site_views.SiteUpdate.as_view(), name="site_update"),
 ]
